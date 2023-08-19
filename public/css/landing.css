@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+.bg-darkslategray {
+    background-color: darkslategray !important;
+    color: white !important;
+}
+
+.bg-khaki {
+    background-color: khaki !important;
+    color: darkslategray !important;
+}
+
+.text-khaki {
+    color: khaki !important;
+}
+
+.text-darkslategray {
+   color: darkslategray !important;
+}
+
+.active {
+    background-color: darkslategray !important;
+    color: white !important;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.mask {
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.opacity-6 {
+    opacity: 0.6 !important;
+}
+
+.carousel-caption {
+    top: 260px;
+    left: 10%;
+    right: 50%;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    display: none;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rated:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+.star-rating-complete {
+    color: #c59b08;
+}
+
+.rating-container .form-control:hover,
+.rating-container .form-control:focus {
+    background: #fff;
+    border: 1px solid #ced4da;
+}
+
+.rating-container textarea:focus,
+.rating-container input:focus {
+    color: #000;
+}
+
+.rated {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rated:not(:checked)>input {
+    position: absolute;
+    display: none;
+}
+
+.rated:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ffc700;
+}
+
+.rated:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rated>input:checked~label {
+    color: #ffc700;
+}
+
+.rated:not(:checked)>label:hover,
+.rated:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rated>input:checked+label:hover,
+.rated>input:checked+label:hover~label,
+.rated>input:checked~label:hover,
+.rated>input:checked~label:hover~label,
+.rated>label:hover~input:checked~label {
+    color: #c59b08;
+}

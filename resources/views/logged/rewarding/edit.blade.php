@@ -1,0 +1,157 @@
+@extends('layouts.master')
+@section('page-title', 'Penilaian Individu')
+@section('active-rewarding','active')
+@section('address')
+<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+    <li class="breadcrumb-item text-sm text-white active" aria-current="page"><a class="text-white" href="{{route('rewarding.index')}}">Penilaian Individu</a></li>
+</ol>
+@endsection
+@section('body')
+<div class="card">
+    <div class="card-header pb-0">
+        <h6 class="mb-0">Edit Penilaian Individu</h6>
+    </div>
+    <div class="card-body pb-0">
+        <form action="{{route('rewarding.update', ['rewarding' => $rewarding->id])}}" method="POST">
+            @csrf
+            @method('patch')
+            <div class="row mb-4">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="pegawai_id" class="form-control-label">Nama<span class="required">*</span></label>
+                        <select id="pegawai_id" name="pegawai_id" class="form-control form-control-sm @error('pegawai_id') is-invalid @enderror" disabled>
+                            @foreach($pegawai as $staf)
+                            <option value='{{$staf->id}}' {{ old('pegawai_id', $rewarding->pegawai_id) == $staf->id ? 'selected' : '' }}>{{$staf->nama}}</option>
+                            @endforeach
+                        </select>
+                        @error('pegawai_id')
+                        <div class="invalid-feedback mt-0">
+                            <small>{{ $message }}</small>
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="tanggal" class="form-control-label">Tanggal<span class="required">*</span></label>
+                        <input class="form-control form-control-sm @error('tanggal') is-invalid @enderror" type="date" id="tanggal" name="tanggal" value="{{old('tanggal') ?? $rewarding->tanggal}}">
+                        @error('tanggal')
+                        <div class="invalid-feedback mt-0">
+                            <small>{{ $message }}</small>
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center mb-5">
+                <label for="kebersihan" class="form-control-label d-block mb-3">Kebersihan<span class="required">*</span></label>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-end">Sangat Buruk</div>
+                    <div class="col-auto">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kebersihan" id="kebersihan1" value="1" @if(old('kebersihan', $rewarding->kebersihan)==1) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kebersihan1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kebersihan" id="kebersihan2" value="2" @if(old('kebersihan', $rewarding->kebersihan)==2) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kebersihan2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kebersihan" id="kebersihan3" value="3" @if(old('kebersihan', $rewarding->kebersihan)==3) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kebersihan3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kebersihan" id="kebersihan4" value="4" @if(old('kebersihan', $rewarding->kebersihan)==4) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kebersihan4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kebersihan" id="kebersihan5" value="5" @if(old('kebersihan', $rewarding->kebersihan)==5) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kebersihan5">5</label>
+                        </div>
+                    </div>
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-start">Sangat Baik</div>
+                    @error('kebersihan')
+                    <div class="invalid-feedback mt-0">
+                        <small>{{ $message }}</small>
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group text-center mb-5">
+                <label for="kerapihan" class="form-control-label d-block mb-3">Kerapihan<span class="required">*</span></label>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-end">Sangat Buruk</div>
+                    <div class="col-auto">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kerapihan" id="kerapihan1" value="1" @if(old('kerapihan', $rewarding->kerapihan)==1) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kerapihan1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kerapihan" id="kerapihan2" value="2" @if(old('kerapihan', $rewarding->kerapihan)==2) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kerapihan2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kerapihan" id="kerapihan3" value="3" @if(old('kerapihan', $rewarding->kerapihan)==3) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kerapihan3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kerapihan" id="kerapihan4" value="4" @if(old('kerapihan', $rewarding->kerapihan)==4) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kerapihan4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="kerapihan" id="kerapihan5" value="5" @if(old('kerapihan', $rewarding->kerapihan)==5) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="kerapihan5">5</label>
+                        </div>
+                    </div>
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-start">Sangat Baik</div>
+                </div>
+                @error('kerapihan')
+                <div class="invalid-feedback mt-0">
+                    <small>{{ $message }}</small>
+                </div>
+                @enderror
+            </div>
+            <div class="form-group text-center">
+                <label for="tanggungjawab" class="form-control-label d-block mb-3">Tanggungjawab<span class="required">*</span></label>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-end">Sangat Buruk</div>
+                    <div class="col-auto">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="tanggungjawab" id="tanggungjawab1" value="1" @if(old('tanggungjawab', $rewarding->tanggungjawab)==1) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="tanggungjawab1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="tanggungjawab" id="tanggungjawab2" value="2" @if(old('tanggungjawab', $rewarding->tanggungjawab)==2) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="tanggungjawab2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="tanggungjawab" id="tanggungjawab3" value="3" @if(old('tanggungjawab', $rewarding->tanggungjawab)==3) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="tanggungjawab3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="tanggungjawab" id="tanggungjawab4" value="4" @if(old('tanggungjawab', $rewarding->tanggungjawab)==4) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="tanggungjawab4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input m-0" type="radio" name="tanggungjawab" id="tanggungjawab5" value="5" @if(old('tanggungjawab', $rewarding->tanggungjawab)==5) checked @endif><br>
+                            <label class="form-check-label text-xs p-0 m-0" for="tanggungjawab5">5</label>
+                        </div>
+                    </div>
+                    <div class="col-3 text-xs forestgreen font-weight-bold text-start">Sangat Baik</div>
+                </div>
+                @error('tanggungjawab')
+                <div class="invalid-feedback mt-0">
+                    <small>{{ $message }}</small>
+                </div>
+                @enderror
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-3 text-end">
+                    <button type="submit" class="btn btn-success btn-xs text-right" data-toggle="confirmation" data-placement="left">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
